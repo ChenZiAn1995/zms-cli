@@ -1,0 +1,12 @@
+mf-cli
+├─.babelrc
+├─src
+|  ├─build.js
+|  ├─create.js
+|  ├─dev.js
+|  ├─init.js
+|  ├─main.js
+|  └util.js
+├─dist
+├─bin
+|  └zms.js

@@ -1,0 +1,34 @@
+{
+  "name": "zms-cli",
+  "version": "0.1.1",
+  "description": "build zms base template",
+  "main": "index.js",
+  "bin": {
+    "zms-cli": "./bin/zms.js",
+    "zmsc": "./bin/zms.js"
+  },
+  "scripts": {
+    "compile": "babel src -d dist",
+    "watch": "npm run compile -- --watch"
+  },
+  "author": "Chen Zian",
+  "license": "ISC",
+  "keywords": [
+    "脚手架",
+    "零毫秒",
+    "zeroms",
+    "flsh",
+    "chenzian"
+  ],
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-env": "^2.4.1",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.1",
+    "download-git-repo": "^3.0.2",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.3.3",
+    "log-symbols": "^4.0.0",
+    "ora": "^5.2.0"
+  }
+}
