@@ -9,6 +9,15 @@ const handlebars = require("handlebars");
 const ora = require("ora");
 const fs = require("fs")
 const symbols = require("log-symbols");
+console.log(`
+███████╗███████╗██████╗  ██████╗     ███╗   ███╗███████╗     ██████╗██╗     ██╗
+╚══███╔╝██╔════╝██╔══██╗██╔═══██╗    ████╗ ████║██╔════╝    ██╔════╝██║     ██║
+  ███╔╝ █████╗  ██████╔╝██║   ██║    ██╔████╔██║███████╗    ██║     ██║     ██║
+ ███╔╝  ██╔══╝  ██╔══██╗██║   ██║    ██║╚██╔╝██║╚════██║    ██║     ██║     ██║
+███████╗███████╗██║  ██║╚██████╔╝    ██║ ╚═╝ ██║███████║    ╚██████╗███████╗██║
+╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝     ╚═╝     ╚═╝╚══════╝     ╚═════╝╚══════╝╚═╝    Created By Chen Zian
+
+`)
 program
   .version(require('../package.json').version, "-v, --version, -V")
   .command('init  <name>')
@@ -47,10 +56,10 @@ program
         }
       ]).then(answers => {
       //在这里获得上面的答案
+      let gitUrl = `ChenZiAn1995/zms-template#${answers.templateType}`
       download(
-        `https://github.com/ChenZiAn1995/zms-template.git#${answers.templateType}`,
+        gitUrl,
         name,
-        { clone: true },
         err => {
           const spinner = ora("正在下载模板...");
           spinner.start();
