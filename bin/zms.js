@@ -16,12 +16,11 @@ console.log(`
  ███╔╝  ██╔══╝  ██╔══██╗██║   ██║    ██║╚██╔╝██║╚════██║    ██║     ██║     ██║
 ███████╗███████╗██║  ██║╚██████╔╝    ██║ ╚═╝ ██║███████║    ╚██████╗███████╗██║
 ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝     ╚═╝     ╚═╝╚══════╝     ╚═════╝╚══════╝╚═╝    Created By Chen Zian
-
 `)
 program
-  .version(require('../package.json').version, "-v, --version, -V")
+  .version(require('../package.json').version, "-v, --version")
   .command('init  <name>')
-  .description('初始化组件模板')
+  .description('输入名称创建模板')
   .action((name) => {
     if (fs.existsSync(name)) {
       // 错误提示项目已存在，避免覆盖原有项目
@@ -65,18 +64,20 @@ program
           spinner.start();
           if (!err) {
             spinner.succeed();
-            // const meta = {
-            //   projectName:answers.projectName,
-            //   description: answers.description,
-            //   author: answers.author
-            // };
-            // const fileName = `${name}/package.json`;
-            // if (fs.existsSync(fileName)) {
-            //   const content = fs.readFileSync(fileName).toString();
-            //   const result = handlebars.compile(content)(meta);
-            //   fs.writeFileSync(fileName, result);
-            // }
+            const meta = {
+              projectName:answers.projectName,
+              description: answers.description,
+              author: answers.author
+            };
+            const fileName = `${name}/package.json`;
+            if (fs.existsSync(fileName)) {
+              const content = fs.readFileSync(fileName).toString();
+              const result = handlebars.compile(content)(meta);
+              fs.writeFileSync(fileName, result);
+            }
             console.log(symbols.success, chalk.green("项目初始化完成"));
+            console.log(symbols.info,chalk.blue(`cd ${name} && npm i`))
+            console.log(symbols.info,chalk.blue(`npm run local`))
           } else {
             spinner.fail();
             console.log(symbols.error, chalk.red(`拉取远程仓库失败${err}`));

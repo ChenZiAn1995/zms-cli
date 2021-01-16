@@ -1,11 +1,11 @@
 {
   "name": "zms-cli",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "build zms base template",
   "main": "index.js",
   "bin": {
     "zms-cli": "./bin/zms.js",
-    "zmsc": "./bin/zms.js"
+    "zms": "./bin/zms.js"
   },
   "scripts": {
     "compile": "babel src -d dist",
